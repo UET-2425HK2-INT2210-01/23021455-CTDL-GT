@@ -1,1 +1,11 @@
+Hai tính chất quan trọng của một hàm băm tốt là:
 
+Phân phối đồng đều (Giảm thiểu va chạm)
+Hàm băm cần phân phối các khóa (keys) một cách đồng đều trên bảng băm.
+Điều này giúp giảm thiểu va chạm (collision), tức là nhiều khóa cùng được ánh xạ vào một vị trí.
+Nếu phân phối không đều, sẽ xảy ra hiện tượng "dồn cục" (clustering), làm giảm hiệu suất tra cứu.
+
+Tính xác định (Nhất quán)
+Hàm băm phải luôn cho ra cùng một giá trị băm khi nhập vào cùng một khóa.
+Điều này đảm bảo các thao tác tìm kiếm, chèn, xóa hoạt động đúng.
+Nếu hàm băm thay đổi giá trị cho cùng một đầu vào, việc truy xuất dữ liệu sẽ bị lỗi.
