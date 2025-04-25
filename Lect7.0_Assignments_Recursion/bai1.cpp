@@ -8,7 +8,8 @@ int tinhtong(int n){
 	return n + tinhtong( n - 1);
 }
 int main(){
-	int n = 5;
+	int n;
+	cin >>n;
 	cout <<"Tong tu 1 den" << n <<"la: " << tinhtong(n) << endl;
 	return 0;
 }
