@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    // M? file d?u vào
+    ifstream infile("jobs.txt"); 
+    // M? file d?u ra
+    ofstream outfile("jobs.out"); 
+
+    int n, m;
+    infile >> n >> m;
+
+    // T?o danh sách k? cho d? th?
+    vector<vector<int>> graph(n + 1);
+    // M?ng luu b?c vào
+    vector<int> in_degree(n + 1, 0);
+
+    // Ð?c m ràng bu?c
+    for (int i = 0; i < m; ++i){
+        int u , v;
+        infile >> u >> v;
+        graph[u].push_back(v);
+        in_degree[v]++;
+    }
+
+    // Hàng d?i luu các công vi?c không có ph? thu?c
+    queue <int> q;
+    for (int i = 1; i <= n; ++i){
+        if (in_degree[i] == 0){
+            q.push(i);
+        }
+    }
+
+    // Vector luu th? t? công vi?c sau khi s?p x?p topo
+    vector<int> result;
+    while (!q.empty()){
+        int u = q.front();
+        q.pop();
+        result.push_back(u);
+
+        // Gi?m b?c vào c?a các công vi?c ph? thu?c vào u
+        for (int v : graph[u]){
+            in_degree[v]--;
+            if (in_degree[v] == 0){
+                q.push(v);
+            }
+        }
+    }
+
+    // Ghi k?t qu? ra file
+    for (int job : result){
+        outfile << job << " ";
+    }
+
+    // Ðóng file
+    infile.close();
+    outfile.close();
+
+    return 0;
+}
+
