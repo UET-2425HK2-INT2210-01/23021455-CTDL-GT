@@ -1,0 +1,9 @@
+Biểu thức chính quy(Regex):
+^[a-zA-Z0-9]+([ _-][a-zA-Z0-9]+)*$
+Giải thích:
+^ và $: bắt đầu & kết thúc chuỗi
+[a-zA-Z0-9]+: phần đầu là chuỗi hợp lệ (chữ hoặc số)
+([ _-][a-zA-Z0-9]+)*: có thể có các nhóm tiếp theo, ngăn cách bởi -,
+_, hoặc space, theo sau là chuỗi hợp lệ
+*: nhóm này có thể lặp lại nhiều lần
+Dấu phân cách không thể đứng liền nhau hay đứng ở đầu/cuối
