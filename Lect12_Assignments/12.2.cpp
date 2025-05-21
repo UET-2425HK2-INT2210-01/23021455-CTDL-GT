@@ -2,24 +2,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// C?u tr�c c?nh
+// Cấu trúc cạnh
 struct Edge {
     int u, v, w;
 };
 
-// H�m so s�nh c?nh theo tr?ng s? tang d?n
+// Hàm so sánh cạnh theo trọng số tăng dần
 bool compare(Edge a, Edge b) {
     return a.w < b.w;
 }
 
-// T�m d?i di?n c?a m?t d?nh (c� n�n du?ng di)
+// Tìm đại diện của một đỉnh (có nén đường đi)
 int findSet(int u, vector<int>& parent) {
     if (u != parent[u])
         parent[u] = findSet(parent[u], parent);
     return parent[u];
 }
 
-// H?p hai t?p h?p
+// Hợp hai tập hợp
 void unionSets(int u, int v, vector<int>& parent, vector<int>& rank) {
     u = findSet(u, parent);
     v = findSet(v, parent);
@@ -43,7 +43,7 @@ int main() {
         cin >> edges[i].u >> edges[i].v >> edges[i].w;
     }
 
-    // S?p x?p c?nh theo tr?ng s?
+    // Sắp xếp cạnh theo trọng số
     sort(edges.begin(), edges.end(), compare);
 
     vector<int> parent(n + 1);
@@ -52,7 +52,7 @@ int main() {
     for (int i = 1; i <= n; ++i)
         parent[i] = i;
 
-    vector<Edge> mst; // Luu c�c c?nh trong c�y khung nh? nh?t
+    vector<Edge> mst; // Lưu các cạnh trong cây khung nhỏ nhất
     int total_cost = 0;
 
     for (Edge e : edges) {
@@ -71,4 +71,3 @@ int main() {
 
     return 0;
 }
-
